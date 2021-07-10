@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 const fieldAttrs = [
   {
@@ -81,17 +81,18 @@ const objectsTemplate = [
 function App() {
   const [objects, setObjects] = useState(objectsTemplate);
   const [sortBy, setSortBy] = useState('order');
-  const [sortOrder, setSortOrder] = useState('');
-
-  useEffect(() => {
-    sortObjects(sortBy);
-  }, [sortBy, sortOrder]);
+  const [sortDirection, setSortDirection] = useState('');
 
   const objectSorterHandler = (event) => {
     sortObjects(event.target.value);
   }
 
-  // objsSorted: Sort the objects by a field.
+  const objectSortDirectionHandler = (event) => {
+    setSortDirection(event.target.value);
+    sortObjects(sortBy);
+  }
+
+  // sortObjects: Sort the objects by a field.
   const sortObjects = field => {
     setSortBy(field);
     const fieldAttr = getField(field);
@@ -99,7 +100,7 @@ function App() {
     const sorted = [...objects];
 
     // set object sort to user sort order. Otherwise, use field default sort order.
-    const sortOrderSet = sortOrder !== ''? sortOrder : fieldAttr.sortOrder;
+    const sortOrderSet = sortDirection !== '' ? sortDirection : fieldAttr.sortOrder;
 
     // use different sort functions depending on ascending / descending or number / string.
     let sortFn = (a, b) => b[field] - a[field];
@@ -118,7 +119,7 @@ function App() {
     
     // set the state to the sorted objects.
     setObjects(sorted);
-  }
+  };
 
   // getField: Get the field props based on the key name
   const getField = (fieldName) => {
@@ -134,7 +135,7 @@ function App() {
         <select name="obj-sorter" onChange={objectSorterHandler}>
           {fieldAttrs.map(field => <option value={field.key} key={field.key}>{field.name}</option>)}
         </select>
-        <select name="obj-sortorder" onChange={(event) => setSortOrder(event.target.value)}>
+        <select name="obj-sortdirection" onChange={objectSortDirectionHandler}>
           <option value="">-</option>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
