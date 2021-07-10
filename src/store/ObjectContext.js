@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { fieldAttrs, objectsTemplate } from './objects.js';
 
 const ObjectContext = React.createContext({
-    objects: []
+  objects: [],
+  sortBy: '',
+  sorterHandler: () => { },
+  sortDirectionHandler: () => { },
+  fieldAttr: '',
+  fieldAttrs: []
 });
 
 export const ObjectContextProvider = props => {
-  const [objects, setObjects] = useState(objectsTemplate);
   const [sortBy, setSortBy] = useState('order');
   const [sortDirection, setSortDirection] = useState('');
     
@@ -18,11 +22,17 @@ export const ObjectContextProvider = props => {
     setSortDirection(event.target.value);
   }
 
-  // sortObjects: Sort the objects by a field.
-  const sortObjects = useCallback(() => {
-    const fieldAttr = getField(sortBy);
+  // getField: Get the field props based on the key name
+  const getField = (fieldName) => {
+    const index = fieldAttrs.findIndex((field) => field.key === fieldName);
+    return fieldAttrs[index];
+  }  
 
-    const sorted = objects;
+  // objects: The sorted objects array.
+  // makes use of the useMemo hook, which watches for changes in sortBy and sortDirection.
+  // if either of those change, the function returns a copy of the orignal array that is sorted.
+  const objects = useMemo(() => {
+    const fieldAttr = getField(sortBy);
 
     // set object sort to user sort order. Otherwise, use field default sort order.
     const sortOrderSet = sortDirection !== '' ? sortDirection : fieldAttr.sortOrder;
@@ -38,23 +48,8 @@ export const ObjectContextProvider = props => {
     }
 
     // sort the objects based on the chosen sortFn.
-    sorted.sort(sortFn);
-    
-    console.log(sortBy, sorted);
-    
-    // set the state to the sorted objects.
-    setObjects(sorted);
-  }, [objects, sortBy, sortDirection]);
-
-  useEffect(() => {
-    sortObjects();
-  }, [sortObjects, sortBy, sortDirection]);
-
-  // getField: Get the field props based on the key name
-  const getField = (fieldName) => {
-    const index = fieldAttrs.findIndex((field) => field.key === fieldName);
-    return fieldAttrs[index];
-  }
+    return Array.from(objectsTemplate).sort(sortFn);
+  }, [sortBy, sortDirection]);
 
   const fieldAttr = getField(sortBy);    
 
