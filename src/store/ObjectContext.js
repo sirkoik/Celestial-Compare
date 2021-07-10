@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { fieldAttrs, objectsTemplate } from './objects.js';
 
 const ObjectContext = React.createContext({
@@ -19,10 +19,10 @@ export const ObjectContextProvider = props => {
   }
 
   // sortObjects: Sort the objects by a field.
-  useEffect(() => {
+  const sortObjects = useCallback(() => {
     const fieldAttr = getField(sortBy);
 
-    const sorted = [...objects];
+    const sorted = objects;
 
     // set object sort to user sort order. Otherwise, use field default sort order.
     const sortOrderSet = sortDirection !== '' ? sortDirection : fieldAttr.sortOrder;
@@ -44,7 +44,11 @@ export const ObjectContextProvider = props => {
     
     // set the state to the sorted objects.
     setObjects(sorted);
-  }, [sortBy, sortDirection]);
+  }, [objects, sortBy, sortDirection]);
+
+  useEffect(() => {
+    sortObjects();
+  }, [sortObjects, sortBy, sortDirection]);
 
   // getField: Get the field props based on the key name
   const getField = (fieldName) => {
