@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { fieldAttrs, objectsTemplate } from './objects.js';
 
 const ObjectContext = React.createContext({
