@@ -23,7 +23,7 @@ export const ObjectContextProvider = (props) => {
     setSortDirection(event.target.value);
   };
 
-  // getObj: get a specific object from the array
+  // getObj: get a specific object from the array based on id
   const getObj = (id) => {
     const objIndex = objects.findIndex((object) => object.id === +id);
 
