@@ -4,11 +4,15 @@ import ObjectContext from "../store/ObjectContext";
 const SortCompare = () => {
   const objCtx = useContext(ObjectContext);
 
-  const fieldList = objCtx.fieldAttrs.map((field) => (
-    <option value={field.key} key={field.key}>
-      {field.name}
-    </option>
-  ));
+  const fieldList = Object.keys(objCtx.fieldAttrsObj).map((key) => {
+    if (key === "id") return null;
+
+    return (
+      <option value={key} key={key}>
+        {objCtx.fieldAttrsObj[key].name}
+      </option>
+    );
+  });
 
   const sortedObjects = objCtx.objects.map((object) => {
     return (
@@ -17,6 +21,10 @@ const SortCompare = () => {
       </li>
     );
   });
+
+  const sortDirection = objCtx.sortDirection || objCtx.fieldAttr.sortOrder;
+  const sortDirectionText =
+    sortDirection === "asc" ? "ascending" : "descending";
 
   return (
     <div className="SortCompare">
@@ -30,7 +38,10 @@ const SortCompare = () => {
           <option value="desc">Descending</option>
         </select>
       </form>
-      <p>Objects, sorted by {objCtx.fieldAttr.name}.</p>
+      <p>
+        Objects, sorted by {objCtx.fieldAttr.name}, {sortDirectionText}
+        {}.
+      </p>
       <ol>{sortedObjects}</ol>
     </div>
   );

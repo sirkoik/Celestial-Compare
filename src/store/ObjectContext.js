@@ -6,6 +6,7 @@ const ObjectContext = React.createContext({
   sortBy: "",
   sorterHandler: () => {},
   sortDirectionHandler: () => {},
+  sortDirection: "",
   fieldAttr: "",
   fieldAttrsObj: [],
 });
@@ -66,6 +67,7 @@ export const ObjectContextProvider = (props) => {
         sortBy: sortBy,
         getObj: getObj,
         sorterHandler: sorterHandler,
+        sortDirection: sortDirection,
         sortDirectionHandler: sortDirectionHandler,
         fieldAttr: fieldAttr,
         fieldAttrsObj: fieldAttrsObj,
