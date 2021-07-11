@@ -1,0 +1,14 @@
+.Compare {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+}
+
+.Compare div {
+  flex: 1;
+}
+
+.Compare select {
+  width: 100%;
+  box-sizing: border-box;
+}
