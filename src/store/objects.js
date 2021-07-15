@@ -42,6 +42,11 @@ export const fieldAttrsObj = {
     unit: "kg",
     sortOrder: "desc",
   },
+  density: {
+    name: "Density",
+    unit: "g / cubic cm",
+    sortOrder: "asc",
+  },
 };
 
 export const objectsTemplate = [
@@ -54,6 +59,7 @@ export const objectsTemplate = [
     "surface-land": 7.48e7,
     volume: 6.083e10,
     mass: 3.3011e23,
+    density: 5.427,
   },
   {
     id: 1,
@@ -64,6 +70,7 @@ export const objectsTemplate = [
     "surface-land": 4.6023e8,
     volume: 9.2843e11,
     mass: 4.8675e24,
+    density: 5.243,
   },
   {
     id: 2,
@@ -75,6 +82,7 @@ export const objectsTemplate = [
     "surface-water": 361132000,
     volume: 1.08321e12,
     mass: 5.97237e24,
+    density: 5.514,
   },
   {
     id: 3,
@@ -85,5 +93,6 @@ export const objectsTemplate = [
     "surface-land": 144798500,
     volume: 1.6318e11,
     mass: 6.4171e23,
+    density: 3.9335,
   },
 ];
