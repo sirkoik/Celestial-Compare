@@ -19,22 +19,38 @@ export const fieldAttrsObj = {
   },
   surface: {
     name: "Surface area",
-    unit: "sq km",
+    unit: (
+      <>
+        km<sup>2</sup>
+      </>
+    ),
     sortOrder: "desc",
   },
   "surface-land": {
     name: "Land surface",
-    unit: "sq km",
+    unit: (
+      <>
+        km<sup>2</sup>
+      </>
+    ),
     sortOrder: "desc",
   },
   "surface-water": {
-    name: "Water surface",
-    unit: "sq km",
+    name: "Surface water",
+    unit: (
+      <>
+        km<sup>2</sup>
+      </>
+    ),
     sortOrder: "desc",
   },
   volume: {
     name: "Volume",
-    unit: "cubic km",
+    unit: (
+      <>
+        km<sup>3</sup>
+      </>
+    ),
     sortOrder: "desc",
   },
   mass: {
@@ -44,7 +60,11 @@ export const fieldAttrsObj = {
   },
   density: {
     name: "Density",
-    unit: "g / cubic cm",
+    unit: (
+      <>
+        g / cm<sup>3</sup>
+      </>
+    ),
     sortOrder: "asc",
   },
 };
