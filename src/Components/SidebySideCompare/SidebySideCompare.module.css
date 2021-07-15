@@ -5,10 +5,17 @@
 }
 
 .Compare div {
-  flex: 1;
+  width: 100%;
+  flex-direction: row;
+  margin: 10px;
 }
 
 .Compare select {
   width: 100%;
   box-sizing: border-box;
+}
+
+.versus {
+  width: 20px;
+  text-align: center;
 }

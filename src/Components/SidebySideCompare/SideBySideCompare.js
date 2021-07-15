@@ -32,6 +32,7 @@ const SideBySideCompare = () => {
         </select>
         <CompareSide id1={id1} id2={id2} />
       </div>
+      <div className={classes.versus}>vs.</div>
       <div>
         <select onChange={comp2Handler} value={id2}>
           {objList}

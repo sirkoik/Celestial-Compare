@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ObjectContext from "../../../store/ObjectContext";
+import classes from "./CompareSide.module.css";
 
 const CompareSide = (props) => {
   const objCtx = useContext(ObjectContext);
@@ -45,12 +46,12 @@ const CompareSide = (props) => {
   };
 
   return (
-    <table className="obj-compare">
+    <table className={classes.CompareTable}>
       <thead>
         <tr>
           <td>-</td>
           <td>Value</td>
-          <td>Compared to {objCtx.getObj(props.id2)["name"]}</td>
+          <td>vs. {objCtx.getObj(props.id2)["name"]}</td>
         </tr>
       </thead>
       <tbody>{output()}</tbody>
