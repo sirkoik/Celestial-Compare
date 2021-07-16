@@ -101,6 +101,7 @@ export const objectsTemplate = [
     volume: 6.083e10,
     mass: 3.3011e23,
     density: 5.427,
+    "surface-gravity": 3.7,
   },
   {
     id: 2,
@@ -112,6 +113,7 @@ export const objectsTemplate = [
     volume: 9.2843e11,
     mass: 4.8675e24,
     density: 5.243,
+    "surface-gravity": 8.87,
   },
   {
     id: 3,
@@ -124,6 +126,7 @@ export const objectsTemplate = [
     volume: 1.08321e12,
     mass: 5.97237e24,
     density: 5.514,
+    "surface-gravity": 9.80665,
   },
   {
     id: 4,
@@ -135,6 +138,7 @@ export const objectsTemplate = [
     volume: 1.6318e11,
     mass: 6.4171e23,
     density: 3.9335,
+    "surface-gravity": 3.72076,
   },
   {
     id: 5,
@@ -146,6 +150,7 @@ export const objectsTemplate = [
     volume: 434000000,
     mass: 9.3835e20,
     density: 2.162,
+    "surface-gravity": 0.28,
   },
   {
     id: 6,
@@ -157,6 +162,7 @@ export const objectsTemplate = [
     volume: 1.4313e15,
     mass: 1.8982e27,
     density: 1.326,
+    "surface-gravity": 24.79,
   },
   {
     id: 7,
@@ -168,6 +174,7 @@ export const objectsTemplate = [
     volume: 8.2713e14,
     mass: 5.6834e26,
     density: 0.687,
+    "surface-gravity": 10.44,
   },
   {
     id: 8,
@@ -179,6 +186,7 @@ export const objectsTemplate = [
     volume: 6.833e13,
     mass: 8.681e25,
     density: 1.27,
+    "surface-gravity": 8.69,
   },
   {
     id: 9,
@@ -190,6 +198,7 @@ export const objectsTemplate = [
     volume: 6.254e13,
     mass: 1.024e26,
     density: 1.638,
+    "surface-gravity": 11.15,
   },
   {
     id: 10,
@@ -201,6 +210,7 @@ export const objectsTemplate = [
     volume: 7.057e9,
     mass: 1.303e22,
     density: 1.854,
+    "surface-gravity": 0.62,
   },
 ];
 
@@ -215,5 +225,6 @@ export const objectsTemplate = [
     volume: ,
     mass: ,
     density: ,
+    "surface-gravity": ,
   },
  */
