@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Celestial-Compare/static/css/main.29d5c308.chunk.css",
-    "main.js": "/Celestial-Compare/static/js/main.f2eb07ab.chunk.js",
-    "main.js.map": "/Celestial-Compare/static/js/main.f2eb07ab.chunk.js.map",
+    "main.css": "/Celestial-Compare/static/css/main.63d36509.chunk.css",
+    "main.js": "/Celestial-Compare/static/js/main.12f7de67.chunk.js",
+    "main.js.map": "/Celestial-Compare/static/js/main.12f7de67.chunk.js.map",
     "runtime-main.js": "/Celestial-Compare/static/js/runtime-main.d6dc33ff.js",
     "runtime-main.js.map": "/Celestial-Compare/static/js/runtime-main.d6dc33ff.js.map",
     "static/js/2.3ca72def.chunk.js": "/Celestial-Compare/static/js/2.3ca72def.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.828df0fd.chunk.js": "/Celestial-Compare/static/js/3.828df0fd.chunk.js",
     "static/js/3.828df0fd.chunk.js.map": "/Celestial-Compare/static/js/3.828df0fd.chunk.js.map",
     "index.html": "/Celestial-Compare/index.html",
-    "static/css/main.29d5c308.chunk.css.map": "/Celestial-Compare/static/css/main.29d5c308.chunk.css.map",
+    "static/css/main.63d36509.chunk.css.map": "/Celestial-Compare/static/css/main.63d36509.chunk.css.map",
     "static/js/2.3ca72def.chunk.js.LICENSE.txt": "/Celestial-Compare/static/js/2.3ca72def.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d6dc33ff.js",
     "static/js/2.3ca72def.chunk.js",
-    "static/css/main.29d5c308.chunk.css",
-    "static/js/main.f2eb07ab.chunk.js"
+    "static/css/main.63d36509.chunk.css",
+    "static/js/main.12f7de67.chunk.js"
   ]
 }
