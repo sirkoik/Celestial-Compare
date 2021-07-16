@@ -2,11 +2,12 @@
   box-sizing: border-box;
   width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .Compare div {
-  width: 100%;
-  flex-direction: row;
+  /* width: 100%; */
   margin: 10px;
 }
 
@@ -17,5 +18,12 @@
 
 .versus {
   width: 20px;
+  padding: 5px;
   text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .Compare {
+    flex-direction: row;
+  }
 }

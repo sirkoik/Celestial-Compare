@@ -7,6 +7,14 @@ body {
   color: #ddd;
 }
 
+div.select {
+  padding: 5px;
+}
+
+div.select label {
+  padding-right: 5px;
+}
+
 select {
   box-sizing: border-box;
   padding: 5px;

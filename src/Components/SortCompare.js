@@ -29,14 +29,23 @@ const SortCompare = () => {
   return (
     <div className="SortCompare">
       <form>
-        <select name="obj-sorter" onChange={objCtx.sorterHandler}>
-          {fieldList}
-        </select>
-        <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
-          <option value="">-</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
+        <div class="select">
+          <label for="obj-sorter">Object</label>
+          <select name="obj-sorter" onChange={objCtx.sorterHandler}>
+            {fieldList}
+          </select>
+        </div>
+        <div class="select">
+          <label for="obj-sortdirection">Direction</label>
+          <select
+            name="obj-sortdirection"
+            onChange={objCtx.sortDirectionHandler}
+          >
+            <option value="">Default</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
       </form>
       <p>
         Objects, sorted by {objCtx.fieldAttr.name}, {sortDirectionText}
