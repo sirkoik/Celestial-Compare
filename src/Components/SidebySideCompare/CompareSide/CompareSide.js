@@ -3,10 +3,6 @@ import ObjectContext from "../../../store/ObjectContext";
 import classes from "./CompareSide.module.css";
 import { commafy } from "../../../shared/numbers";
 
-const descClickHandler = (description, event) => {
-  alert(description);
-};
-
 const CompareSide = (props) => {
   const objCtx = useContext(ObjectContext);
 
@@ -68,12 +64,7 @@ const CompareSide = (props) => {
       return (
         <tr key={key}>
           <td>
-            <button
-              onClick={descClickHandler.bind(
-                null,
-                objCtx.fieldAttrsObj[key].description
-              )}
-            >
+            <button onClick={objCtx.descHandler.bind(null, key)}>
               {fieldAttrs.name}
             </button>
           </td>

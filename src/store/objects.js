@@ -3,6 +3,13 @@ export const fieldAttrsObj = {
     name: "ID",
     sortOrder: "asc",
   },
+  order: {
+    name: "Order",
+    description:
+      "The order of the object in its system. For instance, Earth is the third object in the solar system.",
+    sortOrder: "asc",
+    "comparison-method": "subtract",
+  },
   type: {
     name: "Type",
     description:
@@ -10,13 +17,6 @@ export const fieldAttrsObj = {
     fieldType: "string",
     sortOrder: "asc",
     "comparison-method": "string",
-  },
-  order: {
-    name: "Order",
-    description:
-      "The order of the object in its system. For instance, Earth is the third object in the solar system.",
-    sortOrder: "asc",
-    "comparison-method": "subtract",
   },
   name: {
     name: "Name",

@@ -43,6 +43,7 @@ const SortCompare = () => {
         <option value="asc">Up</option>
         <option value="desc">Down</option>
       </select>
+      <button onClick={objCtx.descHandler.bind(null, objCtx.sortBy)}>?</button>
     </>
   );
 

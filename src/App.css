@@ -52,6 +52,7 @@ table tr td:first-child button {
   background: none;
   color: #bbb;
   cursor: pointer;
+  text-align: left;
 }
 
 table td {

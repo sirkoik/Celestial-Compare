@@ -7,6 +7,7 @@ const ObjectContext = React.createContext({
   sorterHandler: () => {},
   sortDirectionHandler: () => {},
   sortDirection: "",
+  descHandler: () => {},
   fieldAttr: "",
   fieldAttrsObj: [],
 });
@@ -21,6 +22,10 @@ export const ObjectContextProvider = (props) => {
 
   const sortDirectionHandler = (event) => {
     setSortDirection(event.target.value);
+  };
+
+  const descHandler = (key) => {
+    alert(fieldAttrsObj[key].description);
   };
 
   // getObj: get a specific object from the array based on id
@@ -69,6 +74,7 @@ export const ObjectContextProvider = (props) => {
         sorterHandler: sorterHandler,
         sortDirection: sortDirection,
         sortDirectionHandler: sortDirectionHandler,
+        descHandler: descHandler,
         fieldAttr: fieldAttr,
         fieldAttrsObj: fieldAttrsObj,
       }}
