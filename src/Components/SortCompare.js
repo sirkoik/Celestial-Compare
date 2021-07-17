@@ -21,6 +21,9 @@ const SortCompare = () => {
 
     return (
       <tr key={object.name}>
+        <td>
+          <input type="checkbox" name={`compare-${object.id}`} />
+        </td>
         <td>{object.name}</td>
         <td>
           {objValOut || 0} {objCtx.fieldAttr.unit}
@@ -56,6 +59,7 @@ const SortCompare = () => {
       <table>
         <thead>
           <tr>
+            <td>-</td>
             <td>Object</td>
             <td>{sortSelects}</td>
           </tr>

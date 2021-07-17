@@ -19,6 +19,7 @@ const CompareSide = (props) => {
     return keys.map((key) => {
       if (key === "id" || key === "name") return null;
       const fieldAttrs = objCtx.fieldAttrsObj[key];
+      if (fieldAttrs.ignore) return null;
 
       const val1 = obj1[key] || 0;
       const val2 = obj2[key] || 0;
@@ -30,7 +31,7 @@ const CompareSide = (props) => {
       switch (fieldAttrs["comparison-method"]) {
         case "subtract":
           measure = val1 - val2;
-          measureUnits = "";
+          measureUnits = fieldAttrs["unit"] || "";
           val1Out = val1;
           break;
         case "string":

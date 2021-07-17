@@ -1,5 +1,6 @@
 export const fieldAttrsObj = {
   id: {
+    ignore: true,
     name: "ID",
     sortOrder: "asc",
   },
@@ -105,6 +106,24 @@ export const fieldAttrsObj = {
     ),
     sortOrder: "asc",
   },
+  "temperature-mean": {
+    name: "Temperature",
+    description: "The mean temperature on the surface of the object.",
+    unit: "C",
+    "comparison-method": "subtract",
+  },
+  "temperature-details": {
+    ignore: true, // ignore for now
+    name: "Temperatures",
+    description:
+      "Gives a better idea of the range of temperatures experienced by the object.",
+    unit: "C",
+  },
+  atmosphere: {
+    name: "Atmospheric pressure",
+    description: "Atmosphereic pressure on the object's surface.",
+    unit: "kPa",
+  },
 };
 
 export const objectsTemplate = [
@@ -120,6 +139,12 @@ export const objectsTemplate = [
     mass: 1.9885e30,
     density: 1.408,
     "surface-gravity": 274,
+    "temperature-mean": 5498.85,
+    "temperature-details": {
+      center: 15699730,
+      photosphere: 5498.85,
+      corona: 4999727,
+    },
   },
   {
     id: 1,
@@ -133,6 +158,12 @@ export const objectsTemplate = [
     mass: 3.3011e23,
     density: 5.427,
     "surface-gravity": 3.7,
+    "temperature-mean": 67,
+    "temperature-details": {
+      min: -173,
+      mean: 67,
+      max: 427,
+    },
   },
   {
     id: 2,
@@ -146,6 +177,8 @@ export const objectsTemplate = [
     mass: 4.8675e24,
     density: 5.243,
     "surface-gravity": 8.87,
+    "temperature-mean": 464,
+    atmosphere: 9300,
   },
   {
     id: 3,
@@ -160,6 +193,13 @@ export const objectsTemplate = [
     mass: 5.97237e24,
     density: 5.514,
     "surface-gravity": 9.80665,
+    "temperature-mean": 14,
+    "temperature-details": {
+      min: -89.2,
+      mean: 14,
+      max: 56.7,
+    },
+    atmosphere: 101.325,
   },
   {
     id: 4,
@@ -173,6 +213,13 @@ export const objectsTemplate = [
     mass: 6.4171e23,
     density: 3.9335,
     "surface-gravity": 3.72076,
+    "temperature-mean": -63,
+    "temperature-details": {
+      min: -143,
+      mean: -63,
+      max: 35,
+    },
+    atmosphere: 0.636,
   },
   {
     id: 5,
@@ -186,6 +233,12 @@ export const objectsTemplate = [
     mass: 9.3835e20,
     density: 2.162,
     "surface-gravity": 0.28,
+    "temperature-mean": -105.15,
+    "temperature-details": {
+      min: -163.15,
+      mean: -105.15,
+      max: -38.15,
+    },
   },
   {
     id: 6,
@@ -199,6 +252,17 @@ export const objectsTemplate = [
     mass: 1.8982e27,
     density: 1.326,
     "surface-gravity": 24.79,
+    "temperature-mean": -108.15,
+    "temperature-details": {
+      "min-0.1-bar": -195.15,
+      "mean-0.1-bar": -145.15,
+      "max-0.1-bar": 726.85,
+    },
+    atmosphere: 400,
+    notes: [
+      '"Surface" temperature is measured at 1 bar atmospheric pressure. Jupiter has no real surface.',
+      "Atmospheric pressure is measured at the opaque cloud deck.",
+    ],
   },
   {
     id: 7,
@@ -212,6 +276,16 @@ export const objectsTemplate = [
     mass: 5.6834e26,
     density: 0.687,
     "surface-gravity": 10.44,
+    "temperature-mean": -139.15,
+    "temperature-details": {
+      "min-0.1-bar": -185.15,
+      "mean-0.1-bar": -176.15,
+      "max-0.1-bar": -122.15,
+    },
+    atmosphere: 140,
+    notes: [
+      '"Surface" temperature is measured at 1 bar atmospheric pressure. Saturn has no real surface.',
+    ],
   },
   {
     id: 8,
@@ -225,6 +299,15 @@ export const objectsTemplate = [
     mass: 8.681e25,
     density: 1.27,
     "surface-gravity": 8.69,
+    "temperature-mean": -197.2,
+    "temperature-details": {
+      "min-0.1-bar": -226.15,
+      "mean-0.1-bar": -220.15,
+      "max-0.1-bar": -216.15,
+    },
+    notes: [
+      '"Surface" temperature is measured at 1 bar atmospheric pressure. Uranus has no real surface.',
+    ],
   },
   {
     id: 9,
@@ -238,6 +321,13 @@ export const objectsTemplate = [
     mass: 1.024e26,
     density: 1.638,
     "surface-gravity": 11.15,
+    "temperature-mean": -201,
+    "temperature-details": {
+      "mean-0.1-bar": -218,
+    },
+    notes: [
+      '"Surface" temperature is measured at 1 bar atmospheric pressure. Neptune has no real surface.',
+    ],
   },
   {
     id: 10,
@@ -251,6 +341,13 @@ export const objectsTemplate = [
     mass: 1.303e22,
     density: 1.854,
     "surface-gravity": 0.62,
+    "temperature-mean": -229,
+    "temperature-details": {
+      min: -240.15,
+      mean: -229,
+      max: -218.15,
+    },
+    atmosphere: 0.001,
   },
 ];
 

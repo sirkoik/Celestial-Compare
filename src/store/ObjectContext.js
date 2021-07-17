@@ -24,8 +24,11 @@ export const ObjectContextProvider = (props) => {
     setSortDirection(event.target.value);
   };
 
+  // descHandler: Pops up a description of the field.
   const descHandler = (key) => {
-    alert(fieldAttrsObj[key].description);
+    const { name, description } = fieldAttrsObj[key];
+
+    alert(name + "\n\n" + description);
   };
 
   // getObj: get a specific object from the array based on id
