@@ -11,10 +11,12 @@ export const commafy = (num) => {
     );
   }
 
-  const numL = numStr.length;
+  const numL = (Math.abs(Math.floor(num)) + "").length;
   if (numL < 4) return num;
 
-  const offset = numL % 3 || 3;
+  let offset = numL % 3 || 3;
+  if (num < 0) offset++;
+
   const numArr = (num + "").split("");
   let numCommas = "";
   let inDec = false;
