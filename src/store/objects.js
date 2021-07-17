@@ -3,22 +3,39 @@ export const fieldAttrsObj = {
     name: "ID",
     sortOrder: "asc",
   },
+  type: {
+    name: "Type",
+    description:
+      "The object's type as defined by the International Astronomical Union.",
+    fieldType: "string",
+    sortOrder: "asc",
+    "comparison-method": "string",
+  },
   order: {
     name: "Order",
+    description:
+      "The order of the object in its system. For instance, Earth is the third object in the solar system.",
     sortOrder: "asc",
+    "comparison-method": "subtract",
   },
   name: {
     name: "Name",
+    description:
+      "The name of the object. This is defined by the International Astronomical Union.",
     fieldType: "string",
     sortOrder: "asc",
   },
   radius: {
     name: "Radius",
+    description:
+      "The radius of the object in kilometers. This is half of the object's mean diameter.",
     unit: "km",
     sortOrder: "desc",
   },
   surface: {
     name: "Surface area",
+    description:
+      "The total surface area of the object in square kilometers. Includes land and water on solid bodies.",
     unit: (
       <>
         km<sup>2</sup>
@@ -28,6 +45,8 @@ export const fieldAttrsObj = {
   },
   "surface-land": {
     name: "Land surface",
+    description:
+      "The amount of non-liquid surface on a solid body in square kilometers.",
     unit: (
       <>
         km<sup>2</sup>
@@ -37,6 +56,8 @@ export const fieldAttrsObj = {
   },
   "surface-water": {
     name: "Surface water",
+    description:
+      "A measure of the total liquid surface (oceans, lakes, etc.) on a solid body such as Earth or Titan in square kilometers.",
     unit: (
       <>
         km<sup>2</sup>
@@ -46,6 +67,8 @@ export const fieldAttrsObj = {
   },
   volume: {
     name: "Volume",
+    description:
+      "Measures how many cubic kilometers of space the object occupies.",
     unit: (
       <>
         km<sup>3</sup>
@@ -55,20 +78,26 @@ export const fieldAttrsObj = {
   },
   mass: {
     name: "Mass",
+    description:
+      'How much matter the object contains (in kilograms). In a gravity well, this is how "heavy" it would be.',
     unit: "kg",
     sortOrder: "desc",
   },
   density: {
     name: "Density",
+    description:
+      "A measure of how dense the object is, in grams per cubic centimeter.",
     unit: (
       <>
-        g / cm<sup>3</sup>
+        g/cm<sup>3</sup>
       </>
     ),
     sortOrder: "asc",
   },
   "surface-gravity": {
     name: "Surface gravity",
+    description:
+      "A measure of how strong the pull of gravity is on the object's surface.",
     unit: (
       <>
         m/s<sup>2</sup>
@@ -83,6 +112,7 @@ export const objectsTemplate = [
     id: 0,
     order: 0,
     name: "Sun",
+    type: "Star",
     radius: 695700,
     surface: 6.09e12,
     "surface-land": 0,
@@ -95,6 +125,7 @@ export const objectsTemplate = [
     id: 1,
     order: 1,
     name: "Mercury",
+    type: "Planet",
     radius: 2439.7,
     surface: 7.48e7,
     "surface-land": 7.48e7,
@@ -107,6 +138,7 @@ export const objectsTemplate = [
     id: 2,
     order: 2,
     name: "Venus",
+    type: "Planet",
     radius: 6051.8,
     surface: 4.6023e8,
     "surface-land": 4.6023e8,
@@ -119,6 +151,7 @@ export const objectsTemplate = [
     id: 3,
     order: 3,
     name: "Earth",
+    type: "Planet",
     radius: 6378.137,
     surface: 510067420,
     "surface-land": 148940000,
@@ -132,6 +165,7 @@ export const objectsTemplate = [
     id: 4,
     order: 4,
     name: "Mars",
+    type: "Planet",
     radius: 3396.2,
     surface: 144798500,
     "surface-land": 144798500,
@@ -144,6 +178,7 @@ export const objectsTemplate = [
     id: 5,
     order: 4.5,
     name: "Ceres",
+    type: "Dwarf planet",
     radius: 469.73,
     surface: 2770000,
     "surface-land": 2770000,
@@ -156,6 +191,7 @@ export const objectsTemplate = [
     id: 6,
     order: 5,
     name: "Jupiter",
+    type: "Planet",
     radius: 69911,
     surface: 6.1419e10,
     "surface-land": 0,
@@ -168,6 +204,7 @@ export const objectsTemplate = [
     id: 7,
     order: 6,
     name: "Saturn",
+    type: "Planet",
     radius: 58232,
     surface: 4.27e10,
     "surface-land": 0,
@@ -180,6 +217,7 @@ export const objectsTemplate = [
     id: 8,
     order: 7,
     name: "Uranus",
+    type: "Planet",
     radius: 25362,
     surface: 8.1156e9,
     "surface-land": 0,
@@ -192,6 +230,7 @@ export const objectsTemplate = [
     id: 9,
     order: 8,
     name: "Neptune",
+    type: "Planet",
     radius: 24622,
     surface: 7.6183e9,
     "surface-land": 0,
@@ -204,6 +243,7 @@ export const objectsTemplate = [
     id: 10,
     order: 9,
     name: "Pluto",
+    type: "Dwarf planet",
     radius: 1188.3,
     surface: 1.779e7,
     "surface-land": 1.779e7,

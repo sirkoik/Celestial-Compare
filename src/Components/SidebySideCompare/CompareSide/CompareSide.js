@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
 import ObjectContext from "../../../store/ObjectContext";
 import classes from "./CompareSide.module.css";
+import { commafy } from "../../../shared/numbers";
+
+const descClickHandler = (description, event) => {
+  alert(description);
+};
 
 const CompareSide = (props) => {
   const objCtx = useContext(ObjectContext);
@@ -17,28 +22,67 @@ const CompareSide = (props) => {
 
     return keys.map((key) => {
       if (key === "id" || key === "name") return null;
+      const fieldAttrs = objCtx.fieldAttrsObj[key];
 
       const val1 = obj1[key] || 0;
       const val2 = obj2[key] || 0;
 
-      const ratio = +val1 / +val2;
-      let ratioRounded = (100 * ratio).toFixed(1);
-      let ratioUnits = "%";
-      if (ratioRounded > 100) {
-        ratioRounded = ratio.toFixed(2);
-        ratioUnits = "times";
-      }
+      let measure = 0;
+      let measureUnits = "%";
+      let val1Out = val1;
 
-      const fieldAttrs = objCtx.fieldAttrsObj[key];
+      switch (fieldAttrs["comparison-method"]) {
+        case "subtract":
+          measure = val1 - val2;
+          measureUnits = "";
+          val1Out = val1;
+          break;
+        case "string":
+          measure = val2;
+          measureUnits = "";
+          val1Out = val1;
+          break;
+        default:
+          const ratio = +val1 / +val2;
+          measure = (100 * ratio).toFixed(1);
+
+          if (measure !== Infinity && measure > 100) {
+            const ratioFixed =
+              ratio < 1000 ? ratio.toFixed(2) : Math.floor(ratio);
+            measure = commafy(ratioFixed);
+            measureUnits = <>&times;</>;
+          }
+
+          if (measure === Infinity) {
+            measure = "-";
+            measureUnits = "";
+          }
+
+          if ((val1 + "").length > 7) {
+            val1Out = Number(val1).toExponential(2);
+          } else {
+            val1Out = commafy(val1);
+          }
+      }
 
       return (
         <tr key={key}>
-          <td>{fieldAttrs.name}</td>
           <td>
-            {val1} {fieldAttrs.unit}
+            <button
+              onClick={descClickHandler.bind(
+                null,
+                objCtx.fieldAttrsObj[key].description
+              )}
+            >
+              {fieldAttrs.name}
+            </button>
           </td>
           <td>
-            {ratioRounded} {ratioUnits}
+            {val1Out} {fieldAttrs.unit}
+          </td>
+          <td>
+            {measure}
+            {measureUnits}
           </td>
         </tr>
       );

@@ -25,21 +25,24 @@ const SideBySideCompare = () => {
   };
 
   return (
-    <div className={classes.Compare}>
-      <div>
-        <select onChange={comp1Handler} value={id1}>
-          {objList}
-        </select>
-        <CompareSide id1={id1} id2={id2} />
+    <>
+      <h1>Compare two objects</h1>
+      <div className={classes.Compare}>
+        <div className={classes["CompareSide-Container"]}>
+          <select onChange={comp1Handler} value={id1}>
+            {objList}
+          </select>
+          <CompareSide id1={id1} id2={id2} />
+        </div>
+        <div className={classes.versus}>vs.</div>
+        <div className={classes["CompareSide-Container"]}>
+          <select onChange={comp2Handler} value={id2}>
+            {objList}
+          </select>
+          <CompareSide id1={id2} id2={id1} />
+        </div>
       </div>
-      <div className={classes.versus}>vs.</div>
-      <div>
-        <select onChange={comp2Handler} value={id2}>
-          {objList}
-        </select>
-        <CompareSide id1={id2} id2={id1} />
-      </div>
-    </div>
+    </>
   );
 };
 

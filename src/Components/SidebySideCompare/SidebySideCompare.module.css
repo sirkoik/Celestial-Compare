@@ -26,4 +26,8 @@
   .Compare {
     flex-direction: row;
   }
+
+  .CompareSide-Container table {
+    width: 500px;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { commafy } from "../shared/numbers";
 import ObjectContext from "../store/ObjectContext";
 
 const SortCompare = () => {
@@ -15,43 +16,51 @@ const SortCompare = () => {
   });
 
   const sortedObjects = objCtx.objects.map((object) => {
+    const objVal = object[objCtx.sortBy];
+    const objValOut = isNaN(objVal) ? objVal : commafy(objVal);
+
     return (
-      <li key={object.name}>
-        {object.name}: {object[objCtx.sortBy] || 0} {objCtx.fieldAttr.unit}
-      </li>
+      <tr key={object.name}>
+        <td>{object.name}</td>
+        <td>
+          {objValOut || 0} {objCtx.fieldAttr.unit}
+        </td>
+      </tr>
     );
   });
 
-  const sortDirection = objCtx.sortDirection || objCtx.fieldAttr.sortOrder;
-  const sortDirectionText =
-    sortDirection === "asc" ? "ascending" : "descending";
+  // const sortDirection = objCtx.sortDirection || objCtx.fieldAttr.sortOrder;
+  // const sortDirectionText =
+  // sortDirection === "asc" ? "ascending" : "descending";
+
+  const sortSelects = (
+    <>
+      <select name="obj-sorter" onChange={objCtx.sorterHandler}>
+        {fieldList}
+      </select>
+      <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
+        <option value="">-</option>
+        <option value="asc">Up</option>
+        <option value="desc">Down</option>
+      </select>
+    </>
+  );
 
   return (
     <div className="SortCompare">
-      <form>
-        <div class="select">
-          <label for="obj-sorter">Object</label>
-          <select name="obj-sorter" onChange={objCtx.sorterHandler}>
-            {fieldList}
-          </select>
-        </div>
-        <div class="select">
-          <label for="obj-sortdirection">Direction</label>
-          <select
-            name="obj-sortdirection"
-            onChange={objCtx.sortDirectionHandler}
-          >
-            <option value="">Default</option>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </div>
-      </form>
-      <p>
-        Objects, sorted by {objCtx.fieldAttr.name}, {sortDirectionText}
-        {}.
-      </p>
-      <ol>{sortedObjects}</ol>
+      <h1>Rank objects by one variable</h1>
+      {/* <p>
+        Objects, sorted by {objCtx.fieldAttr.name}, {sortDirectionText}.
+      </p> */}
+      <table>
+        <thead>
+          <tr>
+            <td>Object</td>
+            <td>{sortSelects}</td>
+          </tr>
+        </thead>
+        <tbody>{sortedObjects}</tbody>
+      </table>
     </div>
   );
 };

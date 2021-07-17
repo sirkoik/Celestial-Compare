@@ -1,5 +1,6 @@
 * {
   font-family: monospace;
+  font-size: 14pt;
 }
 
 body {
@@ -25,4 +26,35 @@ select {
 
 a {
   color: #ddd;
+}
+
+table {
+  box-sizing: border-box;
+}
+
+table thead {
+  font-weight: bold;
+}
+
+table thead,
+table tr:nth-child(even) {
+  background: rgb(49, 49, 49);
+}
+
+table tr td:first-child {
+  color: #bbb;
+  font-weight: bold;
+}
+
+table tr td:first-child button {
+  text-decoration: underline;
+  border: none;
+  background: none;
+  color: #bbb;
+  cursor: pointer;
+}
+
+table td {
+  padding: 2px;
+  padding-right: 10px;
 }
