@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import "./App.css";
 
-import SortCompare from "./Components/SortCompare";
+import SortCompare from "./Components/SortCompare/SortCompare";
 import SidebySideCompare from "./Components/SidebySideCompare/SideBySideCompare";
 
 function App() {

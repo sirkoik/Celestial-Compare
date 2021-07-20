@@ -1,14 +1,30 @@
+export const processNumber = (num, magBeforeExp = 7) => {
+  const numStr = num.toString();
+  const numL = ("" + Math.floor(num)).length;
+
+  if (numL <= magBeforeExp) {
+    return commafy(numStr);
+  } else {
+    return friendlyExponent(Number(numStr).toExponential());
+  }
+};
+
+export const friendlyExponent = (numStr, precision = 3) => {
+  const [numBase, numExponent] = numStr.split("e+");
+  return (
+    <>
+      {parseFloat(numBase).toFixed(precision)} &times; 10
+      <sup>{numExponent}</sup>
+    </>
+  );
+};
+
 export const commafy = (num) => {
   if (num === "Infinity" || num === Infinity) return num;
 
   const numStr = Math.floor(num) + "";
   if (numStr.includes("e")) {
-    const [numBase, numExponent] = numStr.split("e+");
-    return (
-      <>
-        {numBase} &times; 10<sup>{numExponent}</sup>
-      </>
-    );
+    return friendlyExponent(numStr);
   }
 
   const numL = (Math.abs(Math.floor(num)) + "").length;

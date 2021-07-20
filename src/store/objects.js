@@ -109,7 +109,7 @@ export const fieldAttrsObj = {
   "temperature-mean": {
     name: "Temperature",
     description: "The mean temperature on the surface of the object.",
-    unit: "C",
+    unit: <>&deg;C</>,
     "comparison-method": "subtract",
   },
   "temperature-details": {
@@ -117,7 +117,7 @@ export const fieldAttrsObj = {
     name: "Temperatures",
     description:
       "Gives a better idea of the range of temperatures experienced by the object.",
-    unit: "C",
+    unit: <>&deg;C</>,
   },
   atmosphere: {
     name: "Atmospheric pressure",

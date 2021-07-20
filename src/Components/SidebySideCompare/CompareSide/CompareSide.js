@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ObjectContext from "../../../store/ObjectContext";
 import classes from "./CompareSide.module.css";
-import { commafy } from "../../../shared/numbers";
+import { commafy, friendlyExponent } from "../../../shared/numbers";
 
 const CompareSide = (props) => {
   const objCtx = useContext(ObjectContext);
@@ -32,6 +32,7 @@ const CompareSide = (props) => {
         case "subtract":
           measure = val1 - val2;
           measureUnits = fieldAttrs["unit"] || "";
+          measure = measure > 0 ? "+" + measure : measure;
           val1Out = val1;
           break;
         case "string":
@@ -56,10 +57,15 @@ const CompareSide = (props) => {
           }
 
           if ((val1 + "").length > 7) {
-            val1Out = Number(val1).toExponential(2);
+            val1Out = Number(val1).toExponential();
           } else {
             val1Out = commafy(val1);
           }
+
+          if (val1Out.toString().includes("e")) {
+            val1Out = friendlyExponent(val1Out);
+          }
+          console.log("val1Out", val1Out);
       }
 
       return (
@@ -73,8 +79,7 @@ const CompareSide = (props) => {
             {val1Out} {fieldAttrs.unit}
           </td>
           <td>
-            {measure}
-            {measureUnits}
+            {measure} {measureUnits}
           </td>
         </tr>
       );

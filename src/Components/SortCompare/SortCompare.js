@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { commafy } from "../shared/numbers";
-import ObjectContext from "../store/ObjectContext";
+import { processNumber } from "../../shared/numbers";
+import ObjectContext from "../../store/ObjectContext";
+import classes from "./SortCompare.module.css";
 
 const SortCompare = () => {
   const objCtx = useContext(ObjectContext);
@@ -17,7 +18,7 @@ const SortCompare = () => {
 
   const sortedObjects = objCtx.objects.map((object) => {
     const objVal = object[objCtx.sortBy];
-    const objValOut = isNaN(objVal) ? objVal : commafy(objVal);
+    const objValOut = isNaN(objVal) ? objVal : processNumber(objVal);
 
     return (
       <tr key={object.name}>
@@ -51,7 +52,7 @@ const SortCompare = () => {
   );
 
   return (
-    <div className="SortCompare">
+    <div className={classes.SortCompare}>
       <h1>Rank objects by one variable</h1>
       {/* <p>
         Objects, sorted by {objCtx.fieldAttr.name}, {sortDirectionText}.

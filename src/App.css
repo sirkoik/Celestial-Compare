@@ -57,5 +57,6 @@ table tr td:first-child button {
 
 table td {
   padding: 2px;
+  padding-left: 5px;
   padding-right: 10px;
 }
