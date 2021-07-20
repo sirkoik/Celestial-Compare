@@ -27,6 +27,10 @@ const SideBySideCompare = () => {
   return (
     <>
       <h1>Compare two objects</h1>
+      <p>
+        Compare the properties of two objects side-by-side. Choose different
+        objects to compare by choosing them from the drop down menus.
+      </p>
       <div className={classes.Compare}>
         <div className={classes["CompareSide-Container"]}>
           <select onChange={comp1Handler} value={id1}>

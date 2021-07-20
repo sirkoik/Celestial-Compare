@@ -1,11 +1,16 @@
 * {
   font-family: monospace;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 body {
   background: #000;
   color: #ddd;
+}
+
+h1 {
+  font-size: 120%;
+  margin-bottom: -10px;
 }
 
 div.select {
@@ -41,6 +46,23 @@ table tr:nth-child(even) {
   background: rgb(49, 49, 49);
 }
 
+table thead:hover,
+table tr:nth-child(even):hover,
+table tr:nth-child(odd):hover {
+  background: #ccc;
+  color: #000;
+}
+
+/* Thanks to help from https://stackoverflow.com/a/7217397/5511776 */
+table thead:hover,
+table tr:nth-child(even):hover td,
+table tr:nth-child(odd):hover td,
+table tr:nth-child(even):hover button,
+table tr:nth-child(odd):hover button {
+  background: #ccc;
+  color: #000;
+}
+
 table tr td:first-child {
   color: #bbb;
   font-weight: bold;
@@ -59,4 +81,9 @@ table td {
   padding: 2px;
   padding-left: 5px;
   padding-right: 10px;
+}
+
+button {
+  padding: 5px;
+  min-width: 35px;
 }

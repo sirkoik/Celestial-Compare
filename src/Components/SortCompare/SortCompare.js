@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { processNumber } from "../../shared/numbers";
+import { friendlyExponent, processNumber } from "../../shared/numbers";
 import ObjectContext from "../../store/ObjectContext";
 import classes from "./SortCompare.module.css";
 
@@ -22,9 +22,9 @@ const SortCompare = () => {
 
     return (
       <tr key={object.name}>
-        <td>
+        {/* <td>
           <input type="checkbox" name={`compare-${object.id}`} />
-        </td>
+        </td> */}
         <td>{object.name}</td>
         <td>
           {objValOut || 0} {objCtx.fieldAttr.unit}
@@ -39,30 +39,42 @@ const SortCompare = () => {
 
   const sortSelects = (
     <>
-      <select name="obj-sorter" onChange={objCtx.sorterHandler}>
-        {fieldList}
-      </select>
-      <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
-        <option value="">-</option>
-        <option value="asc">Up</option>
-        <option value="desc">Down</option>
-      </select>
-      <button onClick={objCtx.descHandler.bind(null, objCtx.sortBy)}>?</button>
+      <p>
+        By&nbsp;
+        <select name="obj-sorter" onChange={objCtx.sorterHandler}>
+          {fieldList}
+        </select>
+        <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
+          <option value="">-</option>
+          <option value="asc">Up</option>
+          <option value="desc">Down</option>
+        </select>
+        <button onClick={objCtx.descHandler.bind(null, objCtx.sortBy)}>
+          ?
+        </button>
+      </p>
     </>
   );
 
+  const friendlyName = objCtx.fieldAttrsObj[objCtx.sortBy].name;
+
   return (
     <div className={classes.SortCompare}>
-      <h1>Rank objects by one variable</h1>
+      <h1>Rank sorter</h1>
+      <p>
+        Sort celestial objects by a physical property such as mass or
+        atmospheric pressure. Choose the second drop-down to sort up or down.
+      </p>
       {/* <p>
         Objects, sorted by {objCtx.fieldAttr.name}, {sortDirectionText}.
       </p> */}
+      {sortSelects}
       <table>
         <thead>
           <tr>
-            <td>-</td>
+            {/* <td>-</td> */}
             <td>Object</td>
-            <td>{sortSelects}</td>
+            <td>{friendlyName}</td>
           </tr>
         </thead>
         <tbody>{sortedObjects}</tbody>

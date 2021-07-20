@@ -1,0 +1,17 @@
+.Header {
+  margin-top: 25px;
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.Header .LogoImage {
+  width: 50px;
+}
+
+.Header .LogoText {
+  margin-left: 10px;
+  font: 25px ui-rounded;
+  line-height: 25px;
+}
