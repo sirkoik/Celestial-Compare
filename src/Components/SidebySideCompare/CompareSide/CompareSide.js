@@ -56,6 +56,11 @@ const CompareSide = (props) => {
             measureUnits = "";
           }
 
+          if (isNaN(ratio)) {
+            measure = "-";
+            measureUnits = "";
+          }
+
           if ((val1 + "").length > 7) {
             val1Out = Number(val1).toExponential();
           } else {
