@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { friendlyExponent, processNumber } from "../../shared/numbers";
+import { processNumber } from "../../shared/numbers";
 import ObjectContext from "../../store/ObjectContext";
 import classes from "./SortCompare.module.css";
 
@@ -7,18 +7,46 @@ const SortCompare = () => {
   const objCtx = useContext(ObjectContext);
 
   const fieldList = Object.keys(objCtx.fieldAttrsObj).map((key) => {
-    if (key === "id") return null;
+    const fieldAttrs = objCtx.fieldAttrsObj[key];
+    if (key === "id" || fieldAttrs.ignore) {
+      return null;
+    }
 
     return (
       <option value={key} key={key}>
-        {objCtx.fieldAttrsObj[key].name}
+        {fieldAttrs.name}
       </option>
     );
   });
 
+  const compareMethod = objCtx.fieldAttr["comparison-method"];
+
+  let max = 0;
+  if (compareMethod === "ratio") {
+    // get sort direction either based on user selection or default.
+    const sortDir = objCtx.sortDirection
+      ? objCtx.sortDirection
+      : objCtx.fieldAttrsObj[objCtx.sortBy].sortOrder;
+
+    // max: get the biggest value of the list.
+    max =
+      sortDir === objCtx.SORT_DIR_DOWN
+        ? objCtx.objects[0][objCtx.sortBy]
+        : objCtx.objects[objCtx.objects.length - 1][objCtx.sortBy];
+  }
+
   const sortedObjects = objCtx.objects.map((object) => {
     const objVal = object[objCtx.sortBy];
     const objValOut = isNaN(objVal) ? objVal : processNumber(objVal);
+
+    // create background bar with ratios.
+    let backgroundBar = {};
+    if (compareMethod === "ratio") {
+      const percent = (100 * objVal) / max;
+      backgroundBar = {
+        backgroundImage: `linear-gradient(90deg, #2d5458 ${percent}%, transparent ${percent}%)`,
+      };
+    }
 
     return (
       <tr key={object.name}>
@@ -26,7 +54,7 @@ const SortCompare = () => {
           <input type="checkbox" name={`compare-${object.id}`} />
         </td> */}
         <td>{object.name}</td>
-        <td>
+        <td style={backgroundBar}>
           {objValOut || 0} {objCtx.fieldAttr.unit}
         </td>
       </tr>
@@ -46,12 +74,10 @@ const SortCompare = () => {
         </select>
         <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
           <option value="">-</option>
-          <option value="asc">Up</option>
-          <option value="desc">Down</option>
+          <option value={objCtx.SORT_DIR_UP}>Up</option>
+          <option value={objCtx.SORT_DIR_DOWN}>Down</option>
         </select>
-        <button onClick={objCtx.descHandler.bind(null, objCtx.sortBy)}>
-          ?
-        </button>
+        {/* Compare: {compareMethod} {max} {objCtx.sortDirection} */}
       </p>
     </>
   );
@@ -74,7 +100,12 @@ const SortCompare = () => {
           <tr>
             {/* <td>-</td> */}
             <td>Object</td>
-            <td>{friendlyName}</td>
+            <td>
+              {friendlyName}{" "}
+              <button onClick={objCtx.descHandler.bind(null, objCtx.sortBy)}>
+                ?
+              </button>
+            </td>
           </tr>
         </thead>
         <tbody>{sortedObjects}</tbody>

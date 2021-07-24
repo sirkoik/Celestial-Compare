@@ -25,6 +25,7 @@ export const fieldAttrsObj = {
       "The name of the object. This is defined by the International Astronomical Union.",
     fieldType: "string",
     sortOrder: "asc",
+    "comparison-method": "string",
   },
   radius: {
     name: "Radius",
@@ -32,6 +33,7 @@ export const fieldAttrsObj = {
       "The radius of the object in kilometers. This is half of the object's mean diameter.",
     unit: "km",
     sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   surface: {
     name: "Surface area",
@@ -43,6 +45,7 @@ export const fieldAttrsObj = {
       </>
     ),
     sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   "surface-land": {
     name: "Land surface",
@@ -54,6 +57,7 @@ export const fieldAttrsObj = {
       </>
     ),
     sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   "surface-water": {
     name: "Surface water",
@@ -65,6 +69,7 @@ export const fieldAttrsObj = {
       </>
     ),
     sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   volume: {
     name: "Volume",
@@ -76,6 +81,7 @@ export const fieldAttrsObj = {
       </>
     ),
     sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   mass: {
     name: "Mass",
@@ -83,6 +89,7 @@ export const fieldAttrsObj = {
       'How much matter the object contains (in kilograms). In a gravity well, this is how "heavy" it would be.',
     unit: "kg",
     sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   density: {
     name: "Density",
@@ -93,7 +100,8 @@ export const fieldAttrsObj = {
         g/cm<sup>3</sup>
       </>
     ),
-    sortOrder: "asc",
+    sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   "surface-gravity": {
     name: "Surface gravity",
@@ -104,12 +112,14 @@ export const fieldAttrsObj = {
         m/s<sup>2</sup>
       </>
     ),
-    sortOrder: "asc",
+    sortOrder: "desc",
+    "comparison-method": "ratio",
   },
   "temperature-mean": {
     name: "Temperature",
     description: "The mean temperature on the surface of the object.",
     unit: <>&deg;C</>,
+    sortOrder: "desc",
     "comparison-method": "subtract",
   },
   "temperature-details": {
@@ -123,6 +133,8 @@ export const fieldAttrsObj = {
     name: "Atmospheric pressure",
     description: "Atmosphereic pressure on the object's surface.",
     unit: "kPa",
+    sortOrder: "desc",
+    "comparison-method": "ratio",
   },
 };
 

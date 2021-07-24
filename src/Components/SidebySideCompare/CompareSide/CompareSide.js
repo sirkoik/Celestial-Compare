@@ -70,7 +70,7 @@ const CompareSide = (props) => {
           if (val1Out.toString().includes("e")) {
             val1Out = friendlyExponent(val1Out);
           }
-          console.log("val1Out", val1Out);
+        // console.log("val1Out", val1Out);
       }
 
       return (

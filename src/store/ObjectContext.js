@@ -1,6 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { fieldAttrsObj, objectsTemplate } from "./objects.js";
 
+const SORT_DIR_UP = "asc";
+const SORT_DIR_DOWN = "desc";
+
 const ObjectContext = React.createContext({
   objects: [],
   sortBy: "",
@@ -10,6 +13,8 @@ const ObjectContext = React.createContext({
   descHandler: () => {},
   fieldAttr: "",
   fieldAttrsObj: [],
+  SORT_DIR_UP,
+  SORT_DIR_DOWN,
 });
 
 export const ObjectContextProvider = (props) => {
@@ -49,14 +54,17 @@ export const ObjectContextProvider = (props) => {
     const sortOrderSet =
       sortDirection !== "" ? sortDirection : fieldAttr.sortOrder;
 
+    console.log("field attrs", sortDirection, fieldAttrsObj[sortBy].sortOrder);
+
     // use different sort functions depending on ascending / descending or number / string.
     let sortFn = (a, b) => (b[sortBy] || 0) - (a[sortBy] || 0);
-    if (sortOrderSet === "asc") {
+
+    if (sortOrderSet === SORT_DIR_UP) {
       sortFn = (a, b) => (a[sortBy] || 0) - (b[sortBy] || 0);
       if (fieldAttr.fieldType === "string")
         sortFn = (a, b) => (a[sortBy] + "").localeCompare(b[sortBy]);
     } else {
-      sortFn = (a, b) => b[sortBy] - a[sortBy];
+      sortFn = (a, b) => (b[sortBy] || 0) - (a[sortBy] || 0);
       if (fieldAttr.fieldType === "string")
         sortFn = (a, b) => (b[sortBy] + "").localeCompare(a[sortBy]);
     }
@@ -80,6 +88,8 @@ export const ObjectContextProvider = (props) => {
         descHandler: descHandler,
         fieldAttr: fieldAttr,
         fieldAttrsObj: fieldAttrsObj,
+        SORT_DIR_UP,
+        SORT_DIR_DOWN,
       }}
     >
       {props.children}
