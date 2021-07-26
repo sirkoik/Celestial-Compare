@@ -6,6 +6,7 @@ const SORT_DIR_DOWN = "desc";
 
 const ObjectContext = React.createContext({
   objects: [],
+  objectsTemplate: [],
   sortBy: "",
   sorterHandler: () => {},
   sortDirectionHandler: () => {},
@@ -47,7 +48,6 @@ export const ObjectContextProvider = (props) => {
   // makes use of the useMemo hook, which watches for changes in sortBy and sortDirection.
   // if either of those change, the function returns a copy of the orignal array that is sorted.
   const objects = useMemo(() => {
-    // const fieldAttr = getField(sortBy);
     const fieldAttr = fieldAttrsObj[sortBy];
 
     // set object sort to user sort order. Otherwise, use field default sort order.
@@ -57,37 +57,38 @@ export const ObjectContextProvider = (props) => {
     console.log("field attrs", sortDirection, fieldAttrsObj[sortBy].sortOrder);
 
     // use different sort functions depending on ascending / descending or number / string.
-    let sortFn = (a, b) => (b[sortBy] || 0) - (a[sortBy] || 0);
+    const sortNumUp = (a, b) => (a[sortBy] || 0) - (b[sortBy] || 0);
+    const sortNumDown = (a, b) => (b[sortBy] || 0) - (a[sortBy] || 0);
+    const sortStrUp = (a, b) => (a[sortBy] + "").localeCompare(b[sortBy]);
+    const sortStrDown = (a, b) => (b[sortBy] + "").localeCompare(a[sortBy]);
+
+    let sortFn = sortNumDown;
 
     if (sortOrderSet === SORT_DIR_UP) {
-      sortFn = (a, b) => (a[sortBy] || 0) - (b[sortBy] || 0);
-      if (fieldAttr.fieldType === "string")
-        sortFn = (a, b) => (a[sortBy] + "").localeCompare(b[sortBy]);
-    } else {
-      sortFn = (a, b) => (b[sortBy] || 0) - (a[sortBy] || 0);
-      if (fieldAttr.fieldType === "string")
-        sortFn = (a, b) => (b[sortBy] + "").localeCompare(a[sortBy]);
+      sortFn = fieldAttr.fieldType !== "string" ? sortNumUp : sortStrUp;
+    } else if (sortOrderSet === SORT_DIR_DOWN) {
+      sortFn = fieldAttr.fieldType !== "string" ? sortNumDown : sortStrDown;
     }
 
     // sort the objects based on the chosen sortFn.
     return Array.from(objectsTemplate).sort(sortFn);
   }, [sortBy, sortDirection]);
 
-  //const fieldAttr = getField(sortBy);
   const fieldAttr = fieldAttrsObj[sortBy];
 
   return (
     <ObjectContext.Provider
       value={{
-        objects: objects,
-        sortBy: sortBy,
-        getObj: getObj,
-        sorterHandler: sorterHandler,
-        sortDirection: sortDirection,
-        sortDirectionHandler: sortDirectionHandler,
-        descHandler: descHandler,
-        fieldAttr: fieldAttr,
-        fieldAttrsObj: fieldAttrsObj,
+        objects,
+        objectsTemplate,
+        sortBy,
+        getObj,
+        sorterHandler,
+        sortDirection,
+        sortDirectionHandler,
+        descHandler,
+        fieldAttr,
+        fieldAttrsObj,
         SORT_DIR_UP,
         SORT_DIR_DOWN,
       }}

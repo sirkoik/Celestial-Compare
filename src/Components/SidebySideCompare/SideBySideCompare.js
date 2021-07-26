@@ -8,7 +8,7 @@ const SideBySideCompare = () => {
   const [id1, setId1] = useState(0);
   const [id2, setId2] = useState(1);
 
-  const objList = objCtx.objects.map((object) => {
+  const objList = objCtx.objectsTemplate.map((object) => {
     return (
       <option key={object.id} value={object.id}>
         {object.name}
