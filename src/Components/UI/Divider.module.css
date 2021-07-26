@@ -1,0 +1,10 @@
+.Divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.Divider .content {
+  text-align: center;
+}

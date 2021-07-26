@@ -8,6 +8,9 @@ const SideBySideCompare = () => {
   const [id1, setId1] = useState(0);
   const [id2, setId2] = useState(1);
 
+  const obj1 = objCtx.getObj(id1);
+  const obj2 = objCtx.getObj(id2);
+
   const objList = objCtx.objectsTemplate.map((object) => {
     return (
       <option key={object.id} value={object.id}>
@@ -24,26 +27,56 @@ const SideBySideCompare = () => {
     setId2(event.target.value);
   };
 
+  // switchHandler: switch comparison (e.g. A vs B to B vs A)
+  const switchHandler = () => {
+    const idA = id1;
+    const idB = id2;
+
+    setId1(idB);
+    setId2(idA);
+  };
+
   return (
     <>
-      <h1>Compare two objects</h1>
-      <p>
-        Compare the properties of two objects side-by-side. Choose different
-        objects to compare by choosing them from the drop down menus.
-      </p>
+      <div className={classes.CompareDescription}>
+        <h1>Compare two objects</h1>
+        <p>
+          Compare the properties of two objects side-by-side. Choose different
+          objects to compare by choosing them from the drop down menus.
+        </p>
+        <p>To swap the comparisons, click the buttons above the tables.</p>
+      </div>
       <div className={classes.Compare}>
         <div className={classes["CompareSide-Container"]}>
-          <select onChange={comp1Handler} value={id1}>
+          {/* <select onChange={comp1Handler} value={id1}>
             {objList}
-          </select>
-          <CompareSide id1={id1} id2={id2} />
+          </select> */}
+          <button onClick={switchHandler}>
+            {obj1.name} vs. {obj2.name}
+          </button>
+          <CompareSide
+            id1={id1}
+            id2={id2}
+            objList={objList}
+            comp1Handler={comp1Handler}
+            comp2Handler={comp2Handler}
+          />
         </div>
         <div className={classes.versus}>- vs. -</div>
         <div className={classes["CompareSide-Container"]}>
-          <select onChange={comp2Handler} value={id2}>
+          {/* <select onChange={comp2Handler} value={id2}>
             {objList}
-          </select>
-          <CompareSide id1={id2} id2={id1} />
+          </select> */}
+          <button onClick={switchHandler}>
+            {obj2.name} vs. {obj1.name}
+          </button>
+          <CompareSide
+            id1={id2}
+            id2={id1}
+            objList={objList}
+            comp1Handler={comp2Handler}
+            comp2Handler={comp1Handler}
+          />
         </div>
       </div>
     </>

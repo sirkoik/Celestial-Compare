@@ -7,9 +7,8 @@
   justify-content: center;
 }
 
-.Compare div {
-  /* width: 100%; */
-  /* margin: 10px; */
+.CompareSide-Container {
+  text-align: center;
 }
 
 .Compare select {
@@ -19,17 +18,25 @@
 
 .versus {
   font-size: 120%;
-  width: 20px;
+  width: 50px;
   padding: 5px;
   text-align: center;
 }
 
 @media screen and (min-width: 600px) {
   .Compare {
+    margin: 0 auto;
     flex-direction: row;
+    align-items: flex-start;
+    max-width: 1200px;
   }
 
-  .CompareSide-Container table {
-    /* width: 500px; */
+  .CompareDescription {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .CompareSide-Container {
+    flex-grow: 1;
   }
 }

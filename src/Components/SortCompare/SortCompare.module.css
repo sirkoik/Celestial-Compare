@@ -1,8 +1,15 @@
 .SortCompare {
-  margin-bottom: 25px;
   width: 100%;
 }
 
 .SortCompare table {
   width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .SortCompare {
+    margin: 0 auto;
+
+    max-width: 500px;
+  }
 }

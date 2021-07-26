@@ -19,6 +19,9 @@ const CompareSide = (props) => {
     return keys.map((key) => {
       if (key === "id" || key === "name") return null;
       const fieldAttrs = objCtx.fieldAttrsObj[key];
+      // console.log("key test", key, fieldAttrs);
+      if (!fieldAttrs) return null;
+
       if (fieldAttrs.ignore) return null;
 
       const val1 = obj1[key] || 0;
@@ -31,6 +34,11 @@ const CompareSide = (props) => {
       switch (fieldAttrs["comparison-method"]) {
         case "subtract":
           measure = val1 - val2;
+
+          const measurePlaces =
+            String(measure).length - String(measure).indexOf(".");
+          if (measurePlaces > 2) measure = measure.toFixed(2);
+
           measureUnits = fieldAttrs["unit"] || "";
           measure = measure > 0 ? "+" + measure : measure;
           val1Out = val1;
@@ -95,9 +103,19 @@ const CompareSide = (props) => {
     <table className={classes.CompareTable}>
       <thead>
         <tr>
-          <td>-</td>
-          <td>{objCtx.getObj(props.id1)["name"]}</td>
-          <td>vs. {objCtx.getObj(props.id2)["name"]}</td>
+          <td>Property</td>
+          <td>
+            <select onChange={props.comp1Handler} value={props.id1}>
+              {props.objList}
+            </select>
+            {/* {objCtx.getObj(props.id1)["name"]} */}
+          </td>
+          <td>
+            <select onChange={props.comp2Handler} value={props.id2}>
+              {props.objList}
+            </select>
+            {/* {objCtx.getObj(props.id2)["name"]} */}
+          </td>
         </tr>
       </thead>
       <tbody>{output()}</tbody>
