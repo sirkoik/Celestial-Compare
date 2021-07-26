@@ -5,8 +5,8 @@ import CompareSide from "./CompareSide/CompareSide";
 
 const SideBySideCompare = () => {
   const objCtx = useContext(ObjectContext);
-  const [id1, setId1] = useState(0);
-  const [id2, setId2] = useState(1);
+  const [id1, setId1] = useState(3);
+  const [id2, setId2] = useState(4);
 
   const obj1 = objCtx.getObj(id1);
   const obj2 = objCtx.getObj(id2);
