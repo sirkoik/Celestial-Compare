@@ -14,6 +14,7 @@ const CompareSide = (props) => {
     let keys1 = Object.keys(obj1);
     let keys2 = Object.keys(obj2);
 
+    // make the total keys equivalent to the greatest number of keys.
     const keys = keys1 <= keys2 ? keys1 : keys2;
 
     return keys.map((key) => {
@@ -30,6 +31,7 @@ const CompareSide = (props) => {
       let measure = 0;
       let measureUnits = "%";
       let val1Out = val1;
+      let val2Out = val2;
 
       switch (fieldAttrs["comparison-method"]) {
         case "subtract":
@@ -69,6 +71,8 @@ const CompareSide = (props) => {
             measureUnits = "";
           }
 
+          // format output
+
           if ((val1 + "").length > 7) {
             val1Out = Number(val1).toExponential();
           } else {
@@ -77,6 +81,16 @@ const CompareSide = (props) => {
 
           if (val1Out.toString().includes("e")) {
             val1Out = friendlyExponent(val1Out);
+          }
+
+          if ((val2 + "").length > 7) {
+            val2Out = Number(val2).toExponential();
+          } else {
+            val2Out = commafy(val2);
+          }
+
+          if (val2Out.toString().includes("e")) {
+            val2Out = friendlyExponent(val2Out);
           }
         // console.log("val1Out", val1Out);
       }
@@ -90,6 +104,9 @@ const CompareSide = (props) => {
           </td>
           <td>
             {val1Out} {fieldAttrs.unit}
+          </td>
+          <td>
+            {val2Out} {fieldAttrs.unit}
           </td>
           <td>
             {measure} {measureUnits}
@@ -116,6 +133,7 @@ const CompareSide = (props) => {
             </select>
             {/* {objCtx.getObj(props.id2)["name"]} */}
           </td>
+          <td>Difference</td>
         </tr>
       </thead>
       <tbody>{output()}</tbody>

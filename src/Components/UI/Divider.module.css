@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+
+  font-size: 200%;
+  height: 100px;
 }
 
 .Divider .content {
