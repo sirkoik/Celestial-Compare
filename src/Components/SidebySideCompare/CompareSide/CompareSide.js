@@ -96,7 +96,7 @@ const CompareSide = (props) => {
       <thead>
         <tr>
           <td>-</td>
-          <td>Value</td>
+          <td>{objCtx.getObj(props.id1)["name"]}</td>
           <td>vs. {objCtx.getObj(props.id2)["name"]}</td>
         </tr>
       </thead>
