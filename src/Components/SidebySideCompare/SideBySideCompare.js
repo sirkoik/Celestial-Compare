@@ -71,10 +71,12 @@ const SideBySideCompare = () => {
             <button onClick={switchHandler}>&lt;&gt;</button>
           </h1>
 
-          <p></p>
+          <p>
+            <br />
+          </p>
 
           <h1>
-            {obj1.name} vs. {obj2.name}
+            {obj1.name} vs. {obj2.name} (table)
           </h1>
 
           <CompareSide

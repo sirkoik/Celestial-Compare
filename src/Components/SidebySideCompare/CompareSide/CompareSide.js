@@ -6,6 +6,8 @@ import { commafy, friendlyExponent } from "../../../shared/numbers";
 const CompareSide = (props) => {
   const objCtx = useContext(ObjectContext);
 
+  const list = [];
+
   const output = () => {
     const obj1 = objCtx.getObj(props.id1);
     const obj2 = objCtx.getObj(props.id2);
@@ -95,12 +97,46 @@ const CompareSide = (props) => {
         // console.log("val1Out", val1Out);
       }
 
+      const listItem = (
+        // <details>
+        //   <summary>
+        //     {fieldAttrs.name}: {fieldAttrs.description}
+        //   </summary>
+        //   <p>
+        //     {obj1.name}: {val1Out} {fieldAttrs.unit}
+        //   </p>
+        //   <p>
+        //     {obj2.name}: {val2Out} {fieldAttrs.unit}
+        //   </p>
+        //   <p>
+        //     Compared: {measure} {measureUnits}
+        //   </p>
+        // </details>
+        <>
+          <h1>{fieldAttrs.name}</h1>
+          <p>
+            <i>{fieldAttrs.description}</i>
+          </p>
+          <p>
+            {fieldAttrs.name} of {obj1.name}: {val1Out} {fieldAttrs.unit}
+          </p>
+          <p>
+            {fieldAttrs.name} of {obj2.name}: {val2Out} {fieldAttrs.unit}
+          </p>
+          <p>
+            {fieldAttrs.name} of {obj1.name} vs {obj2.name}: {measure}{" "}
+            {measureUnits}
+          </p>
+          <br />
+        </>
+      );
+
+      list.push(listItem);
+
       return (
         <tr key={key}>
-          <td>
-            <button onClick={objCtx.descHandler.bind(null, key)}>
-              {fieldAttrs.name}
-            </button>
+          <td onClick={objCtx.descHandler.bind(null, key)}>
+            <abbr>{fieldAttrs.name}</abbr>
           </td>
           <td>
             {val1Out} {fieldAttrs.unit}
@@ -117,27 +153,39 @@ const CompareSide = (props) => {
   };
 
   return (
-    <table className={classes.CompareTable}>
-      <thead>
-        <tr>
-          <td>Property</td>
-          <td>
-            <select onChange={props.comp1Handler} value={props.id1}>
+    <>
+      <table className={classes.CompareTable}>
+        <thead>
+          <tr>
+            <td>Property</td>
+            <td>
+              {/* <select onChange={props.comp1Handler} value={props.id1}>
               {props.objList}
-            </select>
-            {/* {objCtx.getObj(props.id1)["name"]} */}
-          </td>
-          <td>
-            <select onChange={props.comp2Handler} value={props.id2}>
+            </select> */}
+              {objCtx.getObj(props.id1)["name"]}
+            </td>
+            <td>
+              {/* <select onChange={props.comp2Handler} value={props.id2}>
               {props.objList}
-            </select>
-            {/* {objCtx.getObj(props.id2)["name"]} */}
-          </td>
-          <td>Difference</td>
-        </tr>
-      </thead>
-      <tbody>{output()}</tbody>
-    </table>
+            </select> */}
+              {objCtx.getObj(props.id2)["name"]}
+            </td>
+            <td>Difference</td>
+          </tr>
+        </thead>
+        <tbody>{output()}</tbody>
+      </table>
+
+      <p>
+        <br />
+      </p>
+
+      <h1>
+        {objCtx.getObj(props.id1)["name"]} vs.{" "}
+        {objCtx.getObj(props.id2)["name"]} (expanded)
+      </h1>
+      <div style={{ "text-align": "left" }}>{list}</div>
+    </>
   );
 };
 

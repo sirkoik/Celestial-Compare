@@ -131,7 +131,7 @@ export const fieldAttrsObj = {
   },
   atmosphere: {
     name: "Atmospheric pressure",
-    description: "Atmosphereic pressure on the object's surface.",
+    description: "Atmospheric pressure on the object's surface.",
     unit: "kPa",
     sortOrder: "desc",
     "comparison-method": "ratio",

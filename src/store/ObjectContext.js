@@ -19,7 +19,7 @@ const ObjectContext = React.createContext({
 });
 
 export const ObjectContextProvider = (props) => {
-  const [sortBy, setSortBy] = useState("order");
+  const [sortBy, setSortBy] = useState("radius");
   const [sortDirection, setSortDirection] = useState("");
 
   const sorterHandler = (event) => {

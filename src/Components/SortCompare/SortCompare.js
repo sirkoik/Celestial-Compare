@@ -69,9 +69,14 @@ const SortCompare = () => {
     <>
       <p>
         By&nbsp;
-        <select name="obj-sorter" onChange={objCtx.sorterHandler}>
+        <select
+          name="obj-sorter"
+          onChange={objCtx.sorterHandler}
+          value={objCtx.sortBy}
+        >
           {fieldList}
         </select>
+        &nbsp;Sort&nbsp;
         <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
           <option value="">-</option>
           <option value={objCtx.SORT_DIR_UP}>Up</option>
