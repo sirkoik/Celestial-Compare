@@ -19,6 +19,7 @@ p {
 }
 
 div.select {
+  display: inline-block;
   padding: 5px;
 }
 

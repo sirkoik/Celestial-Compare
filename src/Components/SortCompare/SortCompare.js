@@ -67,23 +67,32 @@ const SortCompare = () => {
 
   const sortSelects = (
     <>
-      <p>
-        By&nbsp;
-        <select
-          name="obj-sorter"
-          onChange={objCtx.sorterHandler}
-          value={objCtx.sortBy}
-        >
-          {fieldList}
-        </select>
-        &nbsp;Sort&nbsp;
-        <select name="obj-sortdirection" onChange={objCtx.sortDirectionHandler}>
-          <option value="">-</option>
-          <option value={objCtx.SORT_DIR_UP}>Up</option>
-          <option value={objCtx.SORT_DIR_DOWN}>Down</option>
-        </select>
+      <form>
+        <div class="select">
+          <label htmlFor="obj-sorter">Property</label>
+          <select
+            name="obj-sorter"
+            id="obj-sorter"
+            onChange={objCtx.sorterHandler}
+            value={objCtx.sortBy}
+          >
+            {fieldList}
+          </select>
+        </div>
+        <div class="select">
+          <label htmlFor="obj-sortdirection">Sort direction</label>
+          <select
+            name="obj-sortdirection"
+            id="obj-sortdirection"
+            onChange={objCtx.sortDirectionHandler}
+          >
+            <option value="">-</option>
+            <option value={objCtx.SORT_DIR_UP}>Up</option>
+            <option value={objCtx.SORT_DIR_DOWN}>Down</option>
+          </select>
+        </div>
         {/* Compare: {compareMethod} {max} {objCtx.sortDirection} */}
-      </p>
+      </form>
     </>
   );
 

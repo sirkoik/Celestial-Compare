@@ -98,37 +98,41 @@ const CompareSide = (props) => {
       }
 
       const listItem = (
-        // <details>
-        //   <summary>
-        //     {fieldAttrs.name}: {fieldAttrs.description}
-        //   </summary>
+        <details open className={classes.CompareDetails}>
+          <summary className={classes.CompareSummary}>
+            {fieldAttrs.name}
+          </summary>
+          <p>{fieldAttrs.description}</p>
+          <ul>
+            <li>
+              {fieldAttrs.name} of {obj1.name}: {val1Out} {fieldAttrs.unit}
+            </li>
+            <li>
+              {fieldAttrs.name} of {obj2.name}: {val2Out} {fieldAttrs.unit}
+            </li>
+            <li>
+              {fieldAttrs.name} of {obj1.name} vs {obj2.name}: {measure}{" "}
+              {measureUnits}
+            </li>
+          </ul>
+        </details>
+        // <>
+        //   <h1>{fieldAttrs.name}</h1>
         //   <p>
-        //     {obj1.name}: {val1Out} {fieldAttrs.unit}
+        //     <i>{fieldAttrs.description}</i>
         //   </p>
         //   <p>
-        //     {obj2.name}: {val2Out} {fieldAttrs.unit}
+        //     {fieldAttrs.name} of {obj1.name}: {val1Out} {fieldAttrs.unit}
         //   </p>
         //   <p>
-        //     Compared: {measure} {measureUnits}
+        //     {fieldAttrs.name} of {obj2.name}: {val2Out} {fieldAttrs.unit}
         //   </p>
-        // </details>
-        <>
-          <h1>{fieldAttrs.name}</h1>
-          <p>
-            <i>{fieldAttrs.description}</i>
-          </p>
-          <p>
-            {fieldAttrs.name} of {obj1.name}: {val1Out} {fieldAttrs.unit}
-          </p>
-          <p>
-            {fieldAttrs.name} of {obj2.name}: {val2Out} {fieldAttrs.unit}
-          </p>
-          <p>
-            {fieldAttrs.name} of {obj1.name} vs {obj2.name}: {measure}{" "}
-            {measureUnits}
-          </p>
-          <br />
-        </>
+        //   <p>
+        //     {fieldAttrs.name} of {obj1.name} vs {obj2.name}: {measure}{" "}
+        //     {measureUnits}
+        //   </p>
+        //   <br />
+        // </>
       );
 
       list.push(listItem);
@@ -154,27 +158,19 @@ const CompareSide = (props) => {
 
   return (
     <>
-      <table className={classes.CompareTable}>
-        <thead>
-          <tr>
-            <td>Property</td>
-            <td>
-              {/* <select onChange={props.comp1Handler} value={props.id1}>
-              {props.objList}
-            </select> */}
-              {objCtx.getObj(props.id1)["name"]}
-            </td>
-            <td>
-              {/* <select onChange={props.comp2Handler} value={props.id2}>
-              {props.objList}
-            </select> */}
-              {objCtx.getObj(props.id2)["name"]}
-            </td>
-            <td>Difference</td>
-          </tr>
-        </thead>
-        <tbody>{output()}</tbody>
-      </table>
+      <div style={{ width: "100%", "overflow-x": "scroll" }}>
+        <table className={classes.CompareTable}>
+          <thead>
+            <tr>
+              <td>Property</td>
+              <td>{objCtx.getObj(props.id1)["name"]}</td>
+              <td>{objCtx.getObj(props.id2)["name"]}</td>
+              <td>Difference</td>
+            </tr>
+          </thead>
+          <tbody>{output()}</tbody>
+        </table>
+      </div>
 
       <p>
         <br />
@@ -184,6 +180,11 @@ const CompareSide = (props) => {
         {objCtx.getObj(props.id1)["name"]} vs.{" "}
         {objCtx.getObj(props.id2)["name"]} (expanded)
       </h1>
+      <p>
+        The expanded list of properties comparing{" "}
+        {objCtx.getObj(props.id1)["name"]} and{" "}
+        {objCtx.getObj(props.id2)["name"]}.
+      </p>
       <div style={{ "text-align": "left" }}>{list}</div>
     </>
   );

@@ -48,9 +48,6 @@ const SideBySideCompare = () => {
       </div>
       <div className={classes.Compare}>
         <div className={classes["CompareSide-Container"]}>
-          {/* <select onChange={comp1Handler} value={id1}>
-            {objList}
-          </select> */}
           <h1>
             <select
               onChange={comp1Handler}
@@ -79,6 +76,11 @@ const SideBySideCompare = () => {
             {obj1.name} vs. {obj2.name} (table)
           </h1>
 
+          <p style={{ textAlign: "left" }}>
+            On small screens: Scroll the table side to side to see the entire
+            comparison.
+          </p>
+
           <CompareSide
             id1={id1}
             id2={id2}
@@ -87,22 +89,6 @@ const SideBySideCompare = () => {
             comp2Handler={comp2Handler}
           />
         </div>
-        {/* <div className={classes.versus}>- vs. -</div>
-        <div className={classes["CompareSide-Container"]}>
-          {/* <select onChange={comp2Handler} value={id2}>
-            {objList}
-          </select> }
-          <button onClick={switchHandler}>
-            {obj2.name} vs. {obj1.name}
-          </button>
-          <CompareSide
-            id1={id2}
-            id2={id1}
-            objList={objList}
-            comp1Handler={comp2Handler}
-            comp2Handler={comp1Handler}
-          />
-        </div> */}
       </div>
     </>
   );

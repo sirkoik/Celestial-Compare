@@ -10,9 +10,9 @@ import Footer from "./Components/UI/Footer";
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header headerType="headerMain" />
       <SortCompare />
-      <Divider />
+      <Header headerType="compareTwo" />
       <SidebySideCompare />
       <Divider />
       <Footer />

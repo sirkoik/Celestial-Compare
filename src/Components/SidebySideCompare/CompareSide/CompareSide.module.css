@@ -1,3 +1,13 @@
 .CompareTable {
   width: 100%;
+  text-align: left;
+  min-width: 700px;
+}
+
+summary.CompareSummary {
+  font-size: 120%;
+}
+
+details.CompareDetails {
+  margin-bottom: 30px;
 }
