@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ObjectContext from "../../../store/ObjectContext";
 import classes from "./CompareSide.module.css";
 import { commafy, friendlyExponent } from "../../../shared/numbers";
 
 const CompareSide = (props) => {
   const objCtx = useContext(ObjectContext);
+  const [allOpen, setAllOpen] = useState(true);
+
+  const openHandler = (openState) => {
+    setAllOpen(!!openState);
+    //setAllOpen(openState);
+  };
 
   const list = [];
 
@@ -48,7 +54,7 @@ const CompareSide = (props) => {
           val1Out = val1;
           break;
         case "string":
-          measure = val2;
+          measure = "-";
           measureUnits = "";
           val1Out = val1;
           break;
@@ -98,21 +104,20 @@ const CompareSide = (props) => {
       }
 
       const listItem = (
-        <details open className={classes.CompareDetails}>
+        <details open={allOpen} className={classes.CompareDetails} key={key}>
           <summary className={classes.CompareSummary}>
             {fieldAttrs.name}
           </summary>
           <p>{fieldAttrs.description}</p>
           <ul>
             <li>
-              {fieldAttrs.name} of {obj1.name}: {val1Out} {fieldAttrs.unit}
+              {obj1.name}: {val1Out} {fieldAttrs.unit}
             </li>
             <li>
-              {fieldAttrs.name} of {obj2.name}: {val2Out} {fieldAttrs.unit}
+              {obj2.name}: {val2Out} {fieldAttrs.unit}
             </li>
             <li>
-              {fieldAttrs.name} of {obj1.name} vs {obj2.name}: {measure}{" "}
-              {measureUnits}
+              {obj1.name} vs {obj2.name}: {measure} {measureUnits}
             </li>
           </ul>
         </details>
@@ -158,7 +163,7 @@ const CompareSide = (props) => {
 
   return (
     <>
-      <div style={{ width: "100%", "overflow-x": "scroll" }}>
+      <div style={{ width: "100%", overflowX: "scroll" }}>
         <table className={classes.CompareTable}>
           <thead>
             <tr>
@@ -185,7 +190,15 @@ const CompareSide = (props) => {
         {objCtx.getObj(props.id1)["name"]} and{" "}
         {objCtx.getObj(props.id2)["name"]}.
       </p>
-      <div style={{ "text-align": "left" }}>{list}</div>
+      <p style={{ textAlign: "center" }}>
+        <button onClick={openHandler.bind(null, true)} disabled={allOpen}>
+          Expand all
+        </button>
+        <button onClick={openHandler.bind(null, false)} disabled={!allOpen}>
+          Collapse all
+        </button>
+      </p>
+      <div>{list}</div>
     </>
   );
 };

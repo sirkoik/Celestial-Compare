@@ -68,7 +68,7 @@ const SortCompare = () => {
   const sortSelects = (
     <>
       <form>
-        <div class="select">
+        <div className="select">
           <label htmlFor="obj-sorter">Property</label>
           <select
             name="obj-sorter"
@@ -79,7 +79,7 @@ const SortCompare = () => {
             {fieldList}
           </select>
         </div>
-        <div class="select">
+        <div className="select">
           <label htmlFor="obj-sortdirection">Sort direction</label>
           <select
             name="obj-sortdirection"

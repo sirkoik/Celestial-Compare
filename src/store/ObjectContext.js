@@ -54,7 +54,7 @@ export const ObjectContextProvider = (props) => {
     const sortOrderSet =
       sortDirection !== "" ? sortDirection : fieldAttr.sortOrder;
 
-    console.log("field attrs", sortDirection, fieldAttrsObj[sortBy].sortOrder);
+    // console.log("field attrs", sortDirection, fieldAttrsObj[sortBy].sortOrder);
 
     // use different sort functions depending on ascending / descending or number / string.
     const sortNumUp = (a, b) => (a[sortBy] || 0) - (b[sortBy] || 0);

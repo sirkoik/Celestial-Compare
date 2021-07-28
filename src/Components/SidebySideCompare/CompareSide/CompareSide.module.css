@@ -6,6 +6,7 @@
 
 summary.CompareSummary {
   font-size: 120%;
+  cursor: pointer;
 }
 
 details.CompareDetails {

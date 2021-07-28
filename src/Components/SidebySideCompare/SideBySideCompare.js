@@ -48,25 +48,29 @@ const SideBySideCompare = () => {
       </div>
       <div className={classes.Compare}>
         <div className={classes["CompareSide-Container"]}>
-          <h1>
-            <select
-              onChange={comp1Handler}
-              value={id1}
-              style={{ width: "auto" }}
-            >
-              {objList}
-            </select>
-            &nbsp;vs.&nbsp;
-            <select
-              onChange={comp2Handler}
-              value={id2}
-              style={{ width: "auto" }}
-            >
-              {objList}
-            </select>
-            &nbsp;
-            <button onClick={switchHandler}>&lt;&gt;</button>
-          </h1>
+          <div className={classes["CompareSide-Sticky"]}>
+            <h1 style={{ textAlign: "center" }}>
+              <select
+                onChange={comp1Handler}
+                value={id1}
+                style={{ width: "auto" }}
+              >
+                {objList}
+              </select>
+              &nbsp;vs.&nbsp;
+              <select
+                onChange={comp2Handler}
+                value={id2}
+                style={{ width: "auto" }}
+              >
+                {objList}
+              </select>
+              &nbsp;
+              <button onClick={switchHandler} title="Switch">
+                &lt;&gt;
+              </button>
+            </h1>
+          </div>
 
           <p>
             <br />
