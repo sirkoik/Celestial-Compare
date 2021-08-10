@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 // import './index.css';
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -8,7 +8,7 @@ import { ObjectContextProvider } from "./store/ObjectContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename="/">
       <ObjectContextProvider>
         <App />
       </ObjectContextProvider>
