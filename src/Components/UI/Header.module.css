@@ -1,4 +1,4 @@
-.Header {
+.Logo {
   margin-top: 25px;
   margin-bottom: 20px;
 
@@ -6,12 +6,39 @@
   justify-content: center;
 }
 
-.Header .LogoImage {
+.Logo .LogoImage {
   width: 50px;
 }
 
-.Header .LogoText {
+.Logo .LogoText {
   margin-left: 10px;
   font: 25px ui-rounded;
   line-height: 25px;
+}
+
+.active {
+  color: white;
+}
+
+.Header nav {
+  text-align: center;
+}
+
+.Header nav ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.Header nav ul li {
+  display: inline-block;
+}
+
+.HeaderLink {
+  display: inline-block;
+  border: 0.2em solid white;
+  border-radius: 0.4em;
+  padding: 0.5em;
+  margin: 0.2em;
+  background: darkcyan;
+  text-decoration: none;
 }
