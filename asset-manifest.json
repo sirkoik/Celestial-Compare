@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Celestial-Compare/static/css/main.e0c8c6ad.chunk.css",
-    "main.js": "/Celestial-Compare/static/js/main.151334bd.chunk.js",
-    "main.js.map": "/Celestial-Compare/static/js/main.151334bd.chunk.js.map",
-    "runtime-main.js": "/Celestial-Compare/static/js/runtime-main.5e6d345c.js",
-    "runtime-main.js.map": "/Celestial-Compare/static/js/runtime-main.5e6d345c.js.map",
-    "static/js/2.bd74574d.chunk.js": "/Celestial-Compare/static/js/2.bd74574d.chunk.js",
-    "static/js/2.bd74574d.chunk.js.map": "/Celestial-Compare/static/js/2.bd74574d.chunk.js.map",
-    "static/js/3.8be0e781.chunk.js": "/Celestial-Compare/static/js/3.8be0e781.chunk.js",
-    "static/js/3.8be0e781.chunk.js.map": "/Celestial-Compare/static/js/3.8be0e781.chunk.js.map",
+    "main.css": "/Celestial-Compare/static/css/main.e8a01576.chunk.css",
+    "main.js": "/Celestial-Compare/static/js/main.0c3d2b10.chunk.js",
+    "main.js.map": "/Celestial-Compare/static/js/main.0c3d2b10.chunk.js.map",
+    "runtime-main.js": "/Celestial-Compare/static/js/runtime-main.f25c354d.js",
+    "runtime-main.js.map": "/Celestial-Compare/static/js/runtime-main.f25c354d.js.map",
+    "static/js/2.3135bf4b.chunk.js": "/Celestial-Compare/static/js/2.3135bf4b.chunk.js",
+    "static/js/2.3135bf4b.chunk.js.map": "/Celestial-Compare/static/js/2.3135bf4b.chunk.js.map",
+    "static/js/3.40d1972c.chunk.js": "/Celestial-Compare/static/js/3.40d1972c.chunk.js",
+    "static/js/3.40d1972c.chunk.js.map": "/Celestial-Compare/static/js/3.40d1972c.chunk.js.map",
     "index.html": "/Celestial-Compare/index.html",
-    "static/css/main.e0c8c6ad.chunk.css.map": "/Celestial-Compare/static/css/main.e0c8c6ad.chunk.css.map",
-    "static/js/2.bd74574d.chunk.js.LICENSE.txt": "/Celestial-Compare/static/js/2.bd74574d.chunk.js.LICENSE.txt",
+    "static/css/main.e8a01576.chunk.css.map": "/Celestial-Compare/static/css/main.e8a01576.chunk.css.map",
+    "static/js/2.3135bf4b.chunk.js.LICENSE.txt": "/Celestial-Compare/static/js/2.3135bf4b.chunk.js.LICENSE.txt",
     "static/media/jupiter.fb484631.svg": "/Celestial-Compare/static/media/jupiter.fb484631.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5e6d345c.js",
-    "static/js/2.bd74574d.chunk.js",
-    "static/css/main.e0c8c6ad.chunk.css",
-    "static/js/main.151334bd.chunk.js"
+    "static/js/runtime-main.f25c354d.js",
+    "static/js/2.3135bf4b.chunk.js",
+    "static/css/main.e8a01576.chunk.css",
+    "static/js/main.0c3d2b10.chunk.js"
   ]
 }
