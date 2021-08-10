@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Celestial-Compare/static/css/main.e8a01576.chunk.css",
-    "main.js": "/Celestial-Compare/static/js/main.0c3d2b10.chunk.js",
-    "main.js.map": "/Celestial-Compare/static/js/main.0c3d2b10.chunk.js.map",
+    "main.js": "/Celestial-Compare/static/js/main.a37c0ec9.chunk.js",
+    "main.js.map": "/Celestial-Compare/static/js/main.a37c0ec9.chunk.js.map",
     "runtime-main.js": "/Celestial-Compare/static/js/runtime-main.f25c354d.js",
     "runtime-main.js.map": "/Celestial-Compare/static/js/runtime-main.f25c354d.js.map",
     "static/js/2.3135bf4b.chunk.js": "/Celestial-Compare/static/js/2.3135bf4b.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.f25c354d.js",
     "static/js/2.3135bf4b.chunk.js",
     "static/css/main.e8a01576.chunk.css",
-    "static/js/main.0c3d2b10.chunk.js"
+    "static/js/main.a37c0ec9.chunk.js"
   ]
 }
